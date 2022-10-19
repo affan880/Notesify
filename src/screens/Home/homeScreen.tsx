@@ -3,7 +3,12 @@ import React from 'react'
 
 const HomeScreen = () => {
   return (
-    <View>
+    <View style={{
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: '#000000'
+    }} >
       <Text>homeScreen</Text>
     </View>
   )
