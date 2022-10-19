@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "72560531341",
+    "project_id": "notesify-933d9",
+    "storage_bucket": "notesify-933d9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:72560531341:android:0665ef925a800448ee0fc4",
+        "android_client_info": {
+          "package_name": "com.notesify"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "72560531341-7c4uvasvsrb16qoesn6fkc7ua96dmoaj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD953CWLOGzvCvtQCslTdUaaRaICrGcRJ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "72560531341-7c4uvasvsrb16qoesn6fkc7ua96dmoaj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

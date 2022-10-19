@@ -5,7 +5,7 @@ import { Formik } from 'formik'
 type Props = {
   children: any,
   initialValues: any,
-  onSubmit: (values: any) => void,
+  onSubmit: (values: any) => any,
   validationSchema: any,
 }
 

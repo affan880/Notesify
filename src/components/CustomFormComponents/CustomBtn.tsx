@@ -1,22 +1,32 @@
 import { StyleSheet, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
-import { color } from 'react-native-reanimated'
+
+import { useFormikContext } from 'formik'
 
 type Props = {
     title: string,
-    onPress: () => void,
+    onPress?: () => any,
     color?: string,
 }
 
-export const CustomBtn = ({title, onPress, color}: Props) => {
+
+
+export const CustomBtn = ({ title, onPress, color }: Props) => {
+    const { handleSubmit } = useFormikContext()
     return (
-        <TouchableOpacity style={[styles.button,{backgroundColor : color}]} onPress = {onPress} >
+        <TouchableOpacity style={[styles.button,{backgroundColor : color}]} onPress = {handleSubmit} onMagicTap={onPress} >
             <Text style={styles.buttonText}>{title}</Text>
         </TouchableOpacity>
   )
 }
 
-export default CustomBtn
+export const NavBtn = ({ title, onPress, color }: Props) => {
+    return (
+        <TouchableOpacity style={[styles.button, { backgroundColor: color }]} onPress={onPress} onMagicTap={onPress} >
+            <Text style={styles.buttonText}>{title}</Text>
+        </TouchableOpacity>
+    )
+}
 
 const styles = StyleSheet.create({
     button: {

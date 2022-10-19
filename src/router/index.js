@@ -1,14 +1,12 @@
 import { View, Text } from 'react-native'
 import React from 'react'
-import Routes from './Routes'
 import { NavigationContainer } from '@react-navigation/native';
-import AuthStack from './AuthStack/authStack'
+import AuthStack from './AuthStack/authStack';
+import AppStack from './AppStack/appStack';
+import { useAuthentication } from '../utilis/hooks/useAuthentication';
 const Providers = () => {
-  return (
-    <NavigationContainer>
-      <AuthStack />
-    </NavigationContainer>
-  )
+  const { user } = useAuthentication();
+  return user ? <AppStack/> : <AuthStack/>
 }
 
 export default Providers
