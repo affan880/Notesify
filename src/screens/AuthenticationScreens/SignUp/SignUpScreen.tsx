@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, SafeAreaView, ImageBackground, StatusBar, Image, ScrollView } from 'react-native'
+import { StyleSheet, Text, View, SafeAreaView, ImageBackground, StatusBar, Image, ScrollView, Alert } from 'react-native'
 import { NavigationProp, ParamListBase } from '@react-navigation/native'
 import React, { FC, useMemo, useEffect, useState } from 'react'
 import LinearGradient from 'react-native-linear-gradient'
@@ -8,7 +8,7 @@ import { CustomTextInput } from '../../../components/CustomFormComponents/Custom
 import Form from '../../../components/Forms/form'
 import { validationSchema } from '../../../utilis/validation'
 import createStyles from './styles'
-import { createUser } from '../../../Modules/auth/firebase/firebase'
+import { createUser, logOut,  } from '../../../Modules/auth/firebase/firebase'
 
 interface IProps {
     navigation: NavigationProp<ParamListBase>
@@ -24,14 +24,15 @@ const SignUpScreen: FC<IProps> = ({ navigation }) => {
     }
 
     const onSubmit = (email: string, password: string) => {
-        // console.log(email, password)
-        const verificatonSent :any = createUser(email, password);
-        if (verificatonSent) {
-            navigation.navigate('VerificationScreen');
-        }
-        else {
-            console.log('error')
-        }
+        const userSuccessfullySignedIn: any = createUser(email, password);
+        console.log(userSuccessfullySignedIn)
+            logOut();
+            Alert.alert('Successful', 'Please Verify Your Email, Before Login', [
+                {
+                    text: 'Ok',
+                    onPress: () => navigation.navigate('LoginScreen')
+                }
+            ]);
     }
 
     return (

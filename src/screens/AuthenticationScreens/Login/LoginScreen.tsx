@@ -1,6 +1,6 @@
-import { Text, View, StatusBar, Image} from 'react-native'
+import { Text, View, StatusBar, Image, Alert, TouchableOpacity} from 'react-native'
 import { NavigationProp, ParamListBase } from '@react-navigation/native'
-import React, { FC, useMemo } from 'react'
+import React, { FC, useMemo, useRef } from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import createStyles from './styles'
 import { LOGINILLUSTRATION } from '../../../assets'
@@ -8,13 +8,16 @@ import { CustomTextInput } from '../../../components/CustomFormComponents/Custom
 import { CustomBtn, NavBtn} from '../../../components/CustomFormComponents/CustomBtn'
 import Form from '../../../components/Forms/form'
 import { LoginvalidationSchema } from '../../../utilis/validation'
-import { logIn } from '../../../Modules/auth/firebase/firebase'
+import { logIn, forgotPassword, getCurrentUser, logOut, ResendVerification } from '../../../Modules/auth/firebase/firebase'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import CustomAlertComponent from '../../../components/CustomAlertComponent/CustomAlertComponent'
 interface IProps {
     navigation: NavigationProp<ParamListBase>
 }
 
 const LoginScreen: React.FC<IProps> = ({ navigation }) => {
+  const formRef: any = useRef();
+  // console.log(formRef.current.values)
     const styles = useMemo(() => createStyles(), []);
     const initialValues = { 
         email: '',
@@ -23,7 +26,37 @@ const LoginScreen: React.FC<IProps> = ({ navigation }) => {
   
   const userLogin = (email: string, password: string): void => {
     logIn(email, password);
-    // console.log(LoggedIn)
+    const currentUser: any = getCurrentUser();
+    if (currentUser?.emailVerified === false) {
+      Alert.alert('Error', 'Please Verify Your Email, Before Login', [
+        {
+          text: 'Ok',
+          onPress: () => { },
+        },
+        {
+          text: 'Resend Verification Email',
+          onPress: () => {
+            ResendVerification(formRef.current.values.email, formRef.current.values.password)
+           },
+          style: 'cancel',
+        },
+      ]);
+    } else {
+      navigation.navigate('AppStack');
+    }
+      logOut();
+  }
+
+  const forgotPasswordHandler = (): void => {
+    forgotPassword(formRef.current.values.email);
+    Alert.alert('Password reset link has been sent to your email',
+      'Please check your email and follow the instructions to reset your password',
+      [
+        { text: 'OK' },
+
+      ],
+      { cancelable: false }
+    );
   }
 
   return (
@@ -43,12 +76,14 @@ const LoginScreen: React.FC<IProps> = ({ navigation }) => {
               <Text style={styles.welcomeText}>Welcome back!</Text>
               <Text style={styles.loginText}>Please, Log In.</Text>
               <View style={styles.inputContainer}>
-            <Form initialValues={initialValues} validationSchema={LoginvalidationSchema} onSubmit={(values) => 
+            <Form initialValues={initialValues} innerRef = {formRef} validationSchema={LoginvalidationSchema} onSubmit={(values) => 
                       userLogin(values.email, values.password)
                    } >
                     <CustomTextInput leftIcon="user" placeholder="email" name='email' />
-                    <CustomTextInput leftIcon="lock" placeholder="Password" handlePasswordVisibility name="password" /> 
-                    <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
+                    <CustomTextInput leftIcon="lock" placeholder="Password" handlePasswordVisibility name="password" />
+              <TouchableOpacity style={styles.formContainer} touchSoundDisabled={false} >
+                    <Text onPress={() => forgotPasswordHandler()} style={styles.forgotPasswordText}>Forgot Password?</Text>
+              </TouchableOpacity>
                     <CustomBtn title="Log In" color="#19647E" />
                     <Text style={styles.orText} >Or</Text>
                     <View style={styles.CreatAccount}>
