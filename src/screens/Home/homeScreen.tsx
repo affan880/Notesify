@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, StatusBar } from 'react-native'
 import React from 'react'
 
 const HomeScreen = () => {
@@ -7,8 +7,14 @@ const HomeScreen = () => {
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: '#000000'
+      backgroundColor: '#ffffff',
     }} >
+      <StatusBar
+        // animated={true}
+        translucent={true}
+        backgroundColor={'transparent'}
+        barStyle={'dark-content'}
+      />
       <Text>homeScreen</Text>
     </View>
   )
