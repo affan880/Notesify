@@ -89,16 +89,18 @@ const createStyles = () =>
         marginTop: 10,
         alignItems: 'center',
         flexDirection: 'row',
-    },
+        },
+        formContainer: {
+            alignSelf: 'flex-end',
+            marginRight: 25,
+        },
     forgotPasswordText: {
         fontWeight: '100',
-        fontSize: 12,
+        fontSize: 14,
         color: '#fff',
         lineHeight: 37,
-        alignSelf: 'flex-end',
-        marginRight: 25,
         },
-        CreatAccount: {
+    CreatAccount: {
             marginBottom: 20,
         },
     orText: {

@@ -7,11 +7,12 @@ type Props = {
   initialValues: any,
   onSubmit: (values: any) => any,
   validationSchema: any,
+  innerRef?: any,
 }
 
-const Form = ({ children, initialValues, onSubmit, validationSchema }: Props) => {
+const Form = ({ children, initialValues, onSubmit, validationSchema, innerRef }: Props) => {
   return (
-    <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
+    <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema} innerRef={innerRef} >
       {() => (
         <>
           {children}
