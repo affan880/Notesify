@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "72560531341",
-    "project_id": "notesify-933d9",
-    "storage_bucket": "notesify-933d9.appspot.com"
+    "project_number": "97825477322",
+    "project_id": "notesifyapp",
+    "storage_bucket": "notesifyapp.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:72560531341:android:0665ef925a800448ee0fc4",
+        "mobilesdk_app_id": "1:97825477322:android:513dea36d429cf58c3da33",
         "android_client_info": {
           "package_name": "com.notesify"
         }
       },
       "oauth_client": [
         {
-          "client_id": "72560531341-7c4uvasvsrb16qoesn6fkc7ua96dmoaj.apps.googleusercontent.com",
+          "client_id": "97825477322-1lc80m2bccdvdd4868rr0mt2cjkm5u5n.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD953CWLOGzvCvtQCslTdUaaRaICrGcRJ4"
+          "current_key": "AIzaSyCC_mp0vL6ky8-A76HBTLZVRWzvSqYlu-M"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "72560531341-7c4uvasvsrb16qoesn6fkc7ua96dmoaj.apps.googleusercontent.com",
+              "client_id": "97825477322-1lc80m2bccdvdd4868rr0mt2cjkm5u5n.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

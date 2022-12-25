@@ -20,7 +20,7 @@ const AppStack = () => {
                     elevation: 0,
                     borderRadius: 18,
                     height: 60,
-                    backgroundColor: "#19647E",
+                    backgroundColor: "#00A8E8",
                 },
             }}
         >
@@ -34,11 +34,12 @@ const AppStack = () => {
                             size={24}
                             color="black"
                             style={{
-                                color: focused ? '#A094E3' : '#DDCECD',
+                                color: focused ? '#A094E3' : '#ffffff',
                             }}
                         />
                     ),
-                    headerShown: false,
+                    headerShown: true,
+                    headerTitleAlign : "center"
                 }}
             />
             <Tab.Screen
@@ -52,7 +53,7 @@ const AppStack = () => {
                                 size={24}
                                 color="black"
                                 style={{
-                                    color: focused ? '#A094E3' : '#DDCECD',
+                                    color: focused ? '#A094E3' : '#ffffff',
                                 }}
                             />
                         </View>
@@ -83,7 +84,7 @@ const AppStack = () => {
                                 size={24}
                                 color="black"
                                 style={{
-                                    color: focused ? '#A094E3' : '#DDCECD',
+                                    color: focused ? '#A094E3' : '#ffffff',
                                 }}
                             />
                         </View>
@@ -102,7 +103,7 @@ const AppStack = () => {
                                 size={24}
                                 color="black"
                                 style={{
-                                    color: focused ? '#A094E3' : '#DDCECD',
+                                    color: focused ? '#A094E3' : '#ffffff',
                                 }}
                             />
                         </View>

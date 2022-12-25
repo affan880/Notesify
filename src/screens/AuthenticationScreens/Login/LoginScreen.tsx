@@ -10,7 +10,6 @@ import Form from '../../../components/Forms/form'
 import { LoginvalidationSchema } from '../../../utilis/validation'
 import { logIn, forgotPassword, getCurrentUser, logOut, ResendVerification } from '../../../Modules/auth/firebase/firebase'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import CustomAlertComponent from '../../../components/CustomAlertComponent/CustomAlertComponent'
 interface IProps {
     navigation: NavigationProp<ParamListBase>
 }
@@ -41,10 +40,7 @@ const LoginScreen: React.FC<IProps> = ({ navigation }) => {
           style: 'cancel',
         },
       ]);
-    } else {
-      navigation.navigate('AppStack');
     }
-      logOut();
   }
 
   const forgotPasswordHandler = (): void => {
@@ -77,7 +73,7 @@ const LoginScreen: React.FC<IProps> = ({ navigation }) => {
               <Text style={styles.loginText}>Please, Log In.</Text>
               <View style={styles.inputContainer}>
             <Form initialValues={initialValues} innerRef = {formRef} validationSchema={LoginvalidationSchema} onSubmit={(values) => 
-                      userLogin(values.email, values.password)
+                       logIn(values.email, values.password)
                    } >
                     <CustomTextInput leftIcon="user" placeholder="email" name='email' />
                     <CustomTextInput leftIcon="lock" placeholder="Password" handlePasswordVisibility name="password" />

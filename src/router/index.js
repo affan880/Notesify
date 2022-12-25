@@ -5,11 +5,10 @@ import { useAuthentication } from '../utilis/hooks/useAuthentication';
 import {getCurrentUser} from '../Modules/auth/firebase/firebase';
 const Providers = () => {
   const { user } = useAuthentication();
-  console.log('user:', user);
   const currentUser = getCurrentUser();
-  console.log('currentUser:', currentUser);
   
-  return user && user.emailVerified || currentUser !== null && currentUser.emailVerified  ? <AppStack/> : <AuthStack/>
+  // return user && user.emailVerified || currentUser !== null && currentUser.emailVerified  ? <AppStack/> : <AuthStack/>
+  return user || currentUser !== null ? <AppStack/> : <AuthStack/>
 }
 
 export default Providers

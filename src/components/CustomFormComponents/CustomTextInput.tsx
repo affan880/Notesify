@@ -1,5 +1,5 @@
 import React,{useState} from 'react' 
-import { StyleSheet, Text, TextProps, TextInput, View, TouchableOpacity } from 'react-native'
+import { StyleSheet, Dimensions, TextInput, View, TouchableOpacity } from 'react-native'
 import Feather from 'react-native-vector-icons/Feather'
 import { useFormikContext } from 'formik'
 type Props = {
@@ -9,6 +9,9 @@ type Props = {
   name: string
   securuty?: boolean
 }
+
+const Width = Dimensions.get('screen').width;
+
 export const CustomTextInput = ({ leftIcon, placeholder, handlePasswordVisibility, name }: Props) => {
   const [passwordVisibility, setPasswordVisibility] = useState(true)
   const {values, errors, touched, setFieldValue, setFieldTouched } = useFormikContext<any>(); 
@@ -41,7 +44,7 @@ export default CustomTextInput
 const styles = StyleSheet.create({
   input: {
     backgroundColor: '#fff',
-    width: 342,
+    width: Width - 80,
     height: 60,
     borderRadius: 20,
     elevation: 8,
@@ -55,7 +58,7 @@ const styles = StyleSheet.create({
   },
   textInput: {
     height: 60,
-    width: 250,
+    width: '80%',
     fontSize: 16,
     color: '#000000',
     fontFamily: 'Poppins-Regular'
